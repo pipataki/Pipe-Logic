@@ -29,6 +29,7 @@ import tempfile
 import threading
 import time
 
+import cesion_vc
 import config
 from rutas import ruta
 
@@ -289,23 +290,32 @@ def _con_micro_del_servidor(s, micro):
     indice, nombre, frecuencia = micro
     cola = queue.Queue()
     flujo = None
+    cesion = None
 
     def recoger(datos, _frames, _tiempo, _estado):
         cola.put(bytes(datos))
 
     def abrir():
-        nonlocal flujo
+        nonlocal flujo, cesion
         s.preparar(frecuencia)
+        # Si VoiceController tiene el micro, nos lo deja mientras se escucha
+        # (ver cesion_vc.py).
+        cesion = cesion_vc.pedir()
         # Como VoiceController: frecuencia propia del aparato, mono, int16;
         # Vosk se encarga de pasarlo a lo suyo.
-        flujo = sd.RawInputStream(samplerate=frecuencia, blocksize=4096,
-                                  device=indice, dtype="int16", channels=1,
-                                  callback=recoger)
-        flujo.start()
+        try:
+            flujo = sd.RawInputStream(samplerate=frecuencia, blocksize=4096,
+                                      device=indice, dtype="int16", channels=1,
+                                      callback=recoger)
+            flujo.start()
+        except Exception:
+            cesion_vc.soltar(cesion)
+            cesion = None
+            raise
         print(f"[voz] micro abierto: {nombre} a {frecuencia} Hz", flush=True)
 
     def cerrar():
-        nonlocal flujo
+        nonlocal flujo, cesion
         if flujo is not None:
             flujo.stop()
             flujo.close()
@@ -314,6 +324,8 @@ def _con_micro_del_servidor(s, micro):
                 s.audio(cola.get())
             s.cerrar_frase()
             print("[voz] micro cerrado", flush=True)
+        cesion_vc.soltar(cesion)
+        cesion = None
 
     try:
         while True:
@@ -326,8 +338,9 @@ def _con_micro_del_servidor(s, micro):
                     flujo = None
                     s.mandar(tipo="error", texto=(
                         f"No se puede abrir el micro {nombre}: {e}. "
-                        "Si VoiceController está escuchando, lo tiene él: "
-                        "por ALSA directo el micro es de uno solo."))
+                        "Por ALSA directo el micro es de uno solo: si lo "
+                        "tiene otro programa (o un VoiceController sin "
+                        "cesión de micro), no se puede abrir."))
             elif orden == "parar":
                 cerrar()
                 s.mandar(tipo="parado")
