@@ -20,7 +20,7 @@ hermanas, para poder usarse sin manos.
 - **App para el móvil**, emparejada con tu ordenador por un código que el
   ordenador dice en voz alta.
 
-> **Versión 0.1.0**, la primera. Para Linux; Windows vendrá después.
+> **Versión 0.2.0**. Para Linux y Windows (lo de Windows, aún sin probar a fondo).
 
 ## Descarga
 
@@ -31,12 +31,14 @@ en PDF en español e inglés. Más información en
 
 ## Instalar
 
-    unzip Pipe-Logic-0.1.0.zip
-    cd Pipe-Logic-0.1.0
+    unzip Pipe-Logic-0.2.0.zip
+    cd Pipe-Logic-0.2.0
     ./install.sh
 
-y luego `./pipelogic.sh --abrir`. Para actualizar, lo mismo con la versión
-nueva: tus ajustes se conservan. El manual explica el resto.
+y luego `./pipelogic.sh --abrir`. En **Windows** (con Python 3.10 o más
+nuevo): descomprime el zip, ejecuta `install.bat` y luego
+`pipelogic.bat --abrir`. Para actualizar, lo mismo con la versión nueva:
+tus ajustes se conservan. El manual explica el resto.
 
 ## Licencia
 
@@ -50,7 +52,7 @@ Software libre, © 2026 pipataki, **LGPLv3** (`LICENSE`, que se apoya en
 **Pipe-Logic** is an editor for logic and mathematics with the real
 symbols, by buttons or by voice (in Spanish), that also calculates: truth
 tables, normal forms, exact arithmetic, equations, derivatives and
-integrals. It runs on your Linux computer, offline, with an Android
+integrals. It runs on your Linux or Windows computer, offline, with an Android
 companion app. Downloads in
 [Releases](https://github.com/pipataki/Pipe-Logic/releases); manual in
 English included. Free software, © 2026 pipataki, LGPLv3.
