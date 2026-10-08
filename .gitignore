@@ -1,0 +1,12 @@
+# Lo personal de cada instalación (ver PERSONALES en install.sh)
+config_local.py
+certificado/
+modelos/
+voces/
+registro/
+venv/
+modelo_vosk/
+.instalado
+.update_backups/
+__pycache__/
+*.apk

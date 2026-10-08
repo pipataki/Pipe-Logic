@@ -1,0 +1,145 @@
+:root {
+  --fondo: #f6f6f3;
+  --papel: #ffffff;
+  --tinta: #1d1d22;
+  --suave: #6a6a75;
+  --borde: #d4d4d0;
+  --acento: #2f5fb3;
+  --boton: #ececea;
+  --escucha: #c0392b;
+  --aviso: #a05a00;
+}
+/* Oscuro: el del sistema, salvo que se haya elegido a mano (data-tema),
+   y siempre que se elija "oscuro" (en la app del móvil, de serie).
+   OJO: los colores oscuros están DOS veces (CSS no deja juntar una media
+   query y un selector en un bloque): si se toca uno, el otro igual. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="claro"]) {
+    --fondo: #17171b;
+    --papel: #202026;
+    --tinta: #ececf0;
+    --suave: #9a9aa6;
+    --borde: #3a3a44;
+    --acento: #7aa2ec;
+    --boton: #2b2b33;
+    --escucha: #d9534f;
+    --aviso: #e0a050;
+  }
+}
+:root[data-tema="oscuro"] {
+    --fondo: #17171b;
+    --papel: #202026;
+    --tinta: #ececf0;
+    --suave: #9a9aa6;
+    --borde: #3a3a44;
+    --acento: #7aa2ec;
+    --boton: #2b2b33;
+    --escucha: #d9534f;
+    --aviso: #e0a050;
+}
+
+* { box-sizing: border-box; }
+html { color-scheme: light dark; }
+:root[data-tema="claro"] { color-scheme: light; }
+:root[data-tema="oscuro"] { color-scheme: dark; }
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font-family: "DejaVu Sans", "Noto Sans", sans-serif;
+}
+header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--borde);
+}
+h1 { font-size: 20px; margin: 0; }
+.acciones { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+#nivel { width: 90px; height: 14px; }
+main { padding: 12px 16px; max-width: 1100px; margin: 0 auto; }
+textarea {
+  width: 100%;
+  min-height: 34vh;
+  padding: 12px;
+  font-family: "DejaVu Sans Mono", "Noto Sans Math", "DejaVu Sans", monospace;
+  font-size: calc(24px * var(--zoom, 1));
+  line-height: 1.5;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  resize: vertical;
+}
+textarea:focus { outline: 3px solid var(--acento); outline-offset: 1px; }
+#oido { min-height: 1.4em; margin: 6px 0 0; font-size: 18px; }
+#oido .parcial { color: var(--suave); font-style: italic; }
+#oido .fuera { color: var(--aviso); }
+#aviso { min-height: 1.4em; margin: 2px 0 8px; color: var(--suave); }
+#escuchar[aria-pressed="true"] {
+  background: var(--escucha);
+  border-color: var(--escucha);
+  color: #fff;
+}
+button, .boton {
+  font: inherit;
+  color: var(--tinta);
+  background: var(--boton);
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+button:focus-visible, .boton:focus-visible {
+  outline: 3px solid var(--acento);
+  outline-offset: 1px;
+}
+#pestanas { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 8px; }
+#pestanas button[aria-selected="true"] {
+  background: var(--acento);
+  border-color: var(--acento);
+  color: var(--papel);
+}
+#botones {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 6px;
+}
+#botones button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 2px;
+  min-height: 64px;
+}
+#botones .s { font-size: 26px; line-height: 1.2; }
+#botones .n {
+  font-size: 10px;
+  color: var(--suave);
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.oculto {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+#herramientas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+#herramientas .grupo {
+  font-size: 13px;
+  color: var(--suave);
+  margin-left: 6px;
+}
+#herramientas .grupo:first-child { margin-left: 0; }
+#herramientas button { font-size: 14px; padding: 5px 10px; }

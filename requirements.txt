@@ -1,0 +1,7 @@
+flask
+cryptography
+flask-sock
+vosk
+sounddevice
+sympy
+piper-tts

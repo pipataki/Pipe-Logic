@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pipe-Logic</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='editor.css') }}">
+</head>
+<body>
+<header>
+  <h1>Pipe-Logic</h1>
+  <div class="acciones">
+    <button type="button" id="escuchar" aria-pressed="false" title="Escuchar (F2)">Escuchar</button>
+    <meter id="nivel" min="0" max="1" value="0" hidden aria-label="Nivel del micro"></meter>
+    <button type="button" id="copiar">Copiar todo</button>
+    <button type="button" id="guardar">Guardar .txt</button>
+    <label class="boton" for="abrir">Abrir .txt</label>
+    <input type="file" id="abrir" accept=".txt,text/plain" hidden>
+    <button type="button" id="borrar">Vaciar</button>
+    <button type="button" id="zoom_menos" title="Menos zoom (por voz: «alejar»)" aria-label="Menos zoom">A−</button>
+    <button type="button" id="zoom_mas" title="Más zoom (por voz: «acercar»)" aria-label="Más zoom">A+</button>
+    <button type="button" id="tema" title="Tema claro u oscuro" aria-label="Cambiar tema">☾</button>
+  </div>
+</header>
+
+<main>
+  <label for="texto" class="oculto">Texto</label>
+  <textarea id="texto" spellcheck="false" autofocus></textarea>
+  <p id="oido" aria-live="polite"></p>
+  <p id="aviso" role="status" aria-live="polite"></p>
+
+  <section id="herramientas" aria-label="Herramientas"></section>
+
+  <nav id="pestanas" role="tablist" aria-label="Grupos de símbolos"></nav>
+  <section id="botones" role="tabpanel"></section>
+</main>
+
+<script src="{{ url_for('static', filename='editor.js') }}"></script>
+</body>
+</html>

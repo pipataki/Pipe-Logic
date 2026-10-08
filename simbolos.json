@@ -1,0 +1,300 @@
+{
+  "_nota": [
+    "UNICA fuente: de aqui salen los botones, el dictado y la gramatica de Vosk.",
+    "'dichos': frases con que se dicta un simbolo, escritas como se dicen (con tildes): Vosk las necesita asi y el traductor las compara sin tildes.",
+    "'binario': el simbolo se escribe con un espacio a cada lado (p ∧ q).",
+    "'sub' / 'super': lo que pone ese indice cuando se dice 'sub ...' o 'super ...'.",
+    "'oido': lo que entiende el modelo pequeño de Vosk cuando se dice una palabra que no conoce (bicondicional -> 'y condicional'). Sale del registro: '[voz] ...'.",
+    "Las letras NO llevan palabras corrientes ('ve' del verbo ver): se cuelan al hablar. La v es 'uve'."
+  ],
+  "grupos": [
+    {
+      "id": "logica",
+      "nombre": "Lógica",
+      "simbolos": [
+        {"s": "¬", "nombre": "negación", "dichos": ["no", "negación"]},
+        {"s": "∧", "nombre": "conjunción", "dichos": ["and", "conjunción"], "binario": true},
+        {"s": "∨", "nombre": "disyunción", "dichos": ["or", "disyunción"], "binario": true},
+        {"s": "→", "nombre": "condicional", "dichos": ["implica", "entonces", "condicional"], "binario": true},
+        {"s": "↔", "nombre": "bicondicional", "dichos": ["sí y solo sí", "sí solo sí", "si solo si", "si y solo si", "bicondicional", "doble implicación"], "oido": ["y condicional"], "binario": true},
+        {"s": "⊕", "nombre": "disyunción exclusiva", "dichos": ["or exclusivo", "disyunción exclusiva", "xor"], "binario": true},
+        {"s": "≡", "nombre": "equivalente", "dichos": ["equivalente a", "equivale a", "equivalente"], "binario": true},
+        {"s": "⊨", "nombre": "consecuencia lógica", "dichos": ["consecuencia lógica", "modelo de"], "binario": true},
+        {"s": "⊭", "nombre": "no es consecuencia lógica", "dichos": ["no es consecuencia lógica"], "binario": true},
+        {"s": "⊢", "nombre": "deducible", "dichos": ["se deduce", "deduce", "deducible"], "binario": true},
+        {"s": "⊬", "nombre": "no deducible", "dichos": ["no se deduce", "no deducible"], "binario": true},
+        {"s": "⊤", "nombre": "verdadero", "dichos": ["verdadero", "tautologia", "tautología", "verum"], "oido": ["tanto lógica"]},
+        {"s": "⊥", "nombre": "falso", "dichos": ["falso", "contradiccion", "contradicción", "falsum"]},
+        {"s": "∴", "nombre": "por tanto", "dichos": ["por tanto", "luego"], "binario": true},
+        {"s": "(", "nombre": "abre paréntesis", "dichos": ["abre paréntesis", "abre"]},
+        {"s": ")", "nombre": "cierra paréntesis", "dichos": ["cierra paréntesis", "cierra"]}
+      ]
+    },
+    {
+      "id": "primer_orden",
+      "nombre": "Primer orden",
+      "simbolos": [
+        {"s": "∀", "nombre": "para todo", "dichos": ["para todo", "cuantificador universal"]},
+        {"s": "∃", "nombre": "existe", "dichos": ["existe", "cuantificador existencial"]},
+        {"s": "∄", "nombre": "no existe", "dichos": ["no existe"]},
+        {"s": "∃!", "nombre": "existe un único", "dichos": ["existe un único", "existe uno y solo uno"]},
+        {"s": "=", "nombre": "igual", "dichos": ["igual a", "igual"], "binario": true},
+        {"s": "≠", "nombre": "distinto", "dichos": ["distinto de", "distinto"], "binario": true},
+        {"s": ",", "nombre": "coma", "dichos": ["coma"]},
+        {"s": ".", "nombre": "punto", "dichos": ["punto"]}
+      ]
+    },
+    {
+      "id": "conjuntos",
+      "nombre": "Conjuntos",
+      "simbolos": [
+        {"s": "∈", "nombre": "pertenece", "dichos": ["pertenece a", "pertenece"], "binario": true},
+        {"s": "∉", "nombre": "no pertenece", "dichos": ["no pertenece a", "no pertenece"], "binario": true},
+        {"s": "⊂", "nombre": "contenido estrictamente", "dichos": ["contenido estrictamente en", "subconjunto propio de"], "binario": true},
+        {"s": "⊆", "nombre": "contenido", "dichos": ["contenido en", "subconjunto de"], "binario": true},
+        {"s": "⊄", "nombre": "no contenido", "dichos": ["no contenido en", "no es subconjunto de"], "binario": true},
+        {"s": "⊃", "nombre": "contiene estrictamente", "dichos": ["contiene estrictamente a"], "binario": true},
+        {"s": "⊇", "nombre": "contiene", "dichos": ["contiene a"], "binario": true},
+        {"s": "∪", "nombre": "unión", "dichos": ["unión"], "binario": true},
+        {"s": "∩", "nombre": "intersección", "dichos": ["intersección"], "binario": true},
+        {"s": "∖", "nombre": "diferencia", "dichos": ["diferencia"], "binario": true},
+        {"s": "∅", "nombre": "conjunto vacío", "dichos": ["conjunto vacío", "vacío"]},
+        {"s": "℘", "nombre": "partes de", "dichos": ["partes de", "conjunto potencia"]},
+        {"s": "×", "nombre": "producto cartesiano", "dichos": ["producto cartesiano", "cartesiano"], "binario": true},
+        {"s": "∘", "nombre": "composición", "dichos": ["compuesta con", "composición"], "binario": true},
+        {"s": "⁻¹", "nombre": "inversa", "dichos": ["inversa"]},
+        {"s": "ℕ", "nombre": "naturales", "dichos": ["naturales"]},
+        {"s": "ℤ", "nombre": "enteros", "dichos": ["enteros"]},
+        {"s": "ℚ", "nombre": "racionales", "dichos": ["racionales"]},
+        {"s": "ℝ", "nombre": "reales", "dichos": ["reales"]},
+        {"s": "ℂ", "nombre": "complejos", "dichos": ["complejos"]},
+        {"s": "{", "nombre": "abre llave", "dichos": ["abre llave", "abre llaves"]},
+        {"s": "}", "nombre": "cierra llave", "dichos": ["cierra llave", "cierra llaves"]},
+        {"s": "|", "nombre": "tal que", "dichos": ["tal que", "barra"], "binario": true}
+      ]
+    },
+    {
+      "id": "relaciones",
+      "nombre": "Relaciones",
+      "simbolos": [
+        {"s": "<", "nombre": "menor que", "dichos": ["menor que"], "binario": true},
+        {"s": ">", "nombre": "mayor que", "dichos": ["mayor que"], "binario": true},
+        {"s": "≤", "nombre": "menor o igual", "dichos": ["menor o igual que", "menor o igual"], "binario": true},
+        {"s": "≥", "nombre": "mayor o igual", "dichos": ["mayor o igual que", "mayor o igual"], "binario": true},
+        {"s": "≈", "nombre": "aproximadamente", "dichos": ["aproximadamente"], "binario": true},
+        {"s": "∼", "nombre": "relacionado con", "dichos": ["relacionado con", "virgulilla"], "binario": true},
+        {"s": "≅", "nombre": "isomorfo", "dichos": ["isomorfo a", "congruente con", "congruente"], "binario": true},
+        {"s": "≺", "nombre": "precede", "dichos": ["precede a"], "binario": true},
+        {"s": "≼", "nombre": "precede o igual", "dichos": ["precede o igual a"], "binario": true},
+        {"s": "∣", "nombre": "divide a", "dichos": ["divide a"], "binario": true},
+        {"s": "∤", "nombre": "no divide a", "dichos": ["no divide a"], "binario": true}
+      ]
+    },
+    {
+      "id": "aritmetica",
+      "nombre": "Aritmética",
+      "simbolos": [
+        {"s": "+", "nombre": "más", "dichos": ["más"], "binario": true},
+        {"s": "−", "nombre": "menos", "dichos": ["menos"], "binario": true},
+        {"s": "·", "nombre": "por", "dichos": ["por"], "binario": true},
+        {"s": "÷", "nombre": "entre", "dichos": ["dividido entre", "entre"], "binario": true},
+        {"s": "/", "nombre": "barra de fracción", "dichos": ["partido por"]},
+        {"s": "±", "nombre": "más menos", "dichos": ["más menos"], "binario": true},
+        {"s": "√", "nombre": "raíz", "dichos": ["raíz cuadrada de", "raíz de", "raíz"]},
+        {"s": "∞", "nombre": "infinito", "dichos": ["infinito"]},
+        {"s": "!", "nombre": "factorial", "dichos": ["factorial"]},
+        {"s": "∑", "nombre": "sumatorio", "dichos": ["sumatorio", "sumatoria"]},
+        {"s": "∏", "nombre": "productorio", "dichos": ["productorio"]},
+        {"s": "∫", "nombre": "integral", "dichos": ["integral de", "integral"]},
+        {"s": "⌊", "nombre": "abre suelo", "dichos": ["abre suelo"]},
+        {"s": "⌋", "nombre": "cierra suelo", "dichos": ["cierra suelo"]},
+        {"s": "⌈", "nombre": "abre techo", "dichos": ["abre techo"]},
+        {"s": "⌉", "nombre": "cierra techo", "dichos": ["cierra techo"]},
+        {"s": "[", "nombre": "abre corchete", "dichos": ["abre corchete", "abre corchetes"]},
+        {"s": "]", "nombre": "cierra corchete", "dichos": ["cierra corchete", "cierra corchetes"]},
+        {"s": "½", "nombre": "un medio", "dichos": ["un medio"]},
+        {"s": "⅓", "nombre": "un tercio", "dichos": ["un tercio"]},
+        {"s": "¼", "nombre": "un cuarto", "dichos": ["un cuarto"]},
+        {"s": "¾", "nombre": "tres cuartos", "dichos": ["tres cuartos"]}
+      ]
+    },
+    {
+      "id": "indices",
+      "nombre": "Índices",
+      "simbolos": [
+        {"s": "₀", "nombre": "subíndice cero", "sub": "0"},
+        {"s": "₁", "nombre": "subíndice uno", "sub": "1"},
+        {"s": "₂", "nombre": "subíndice dos", "sub": "2"},
+        {"s": "₃", "nombre": "subíndice tres", "sub": "3"},
+        {"s": "₄", "nombre": "subíndice cuatro", "sub": "4"},
+        {"s": "₅", "nombre": "subíndice cinco", "sub": "5"},
+        {"s": "₆", "nombre": "subíndice seis", "sub": "6"},
+        {"s": "₇", "nombre": "subíndice siete", "sub": "7"},
+        {"s": "₈", "nombre": "subíndice ocho", "sub": "8"},
+        {"s": "₉", "nombre": "subíndice nueve", "sub": "9"},
+        {"s": "ᵢ", "nombre": "subíndice i", "sub": "i"},
+        {"s": "ⱼ", "nombre": "subíndice jota", "sub": "j"},
+        {"s": "ₖ", "nombre": "subíndice ka", "sub": "k"},
+        {"s": "ₙ", "nombre": "subíndice ene", "sub": "n"},
+        {"s": "ₘ", "nombre": "subíndice eme", "sub": "m"},
+        {"s": "ₓ", "nombre": "subíndice equis", "sub": "x"},
+        {"s": "₊", "nombre": "subíndice más", "sub": "+"},
+        {"s": "₋", "nombre": "subíndice menos", "sub": "-"},
+        {"s": "⁰", "nombre": "superíndice cero", "super": "0"},
+        {"s": "¹", "nombre": "superíndice uno", "super": "1"},
+        {"s": "²", "nombre": "al cuadrado", "super": "2", "dichos": ["al cuadrado"]},
+        {"s": "³", "nombre": "al cubo", "super": "3", "dichos": ["al cubo"]},
+        {"s": "⁴", "nombre": "superíndice cuatro", "super": "4"},
+        {"s": "⁵", "nombre": "superíndice cinco", "super": "5"},
+        {"s": "⁶", "nombre": "superíndice seis", "super": "6"},
+        {"s": "⁷", "nombre": "superíndice siete", "super": "7"},
+        {"s": "⁸", "nombre": "superíndice ocho", "super": "8"},
+        {"s": "⁹", "nombre": "superíndice nueve", "super": "9"},
+        {"s": "ⁱ", "nombre": "superíndice i", "super": "i"},
+        {"s": "ᵏ", "nombre": "superíndice ka", "super": "k"},
+        {"s": "ⁿ", "nombre": "superíndice ene", "super": "n"},
+        {"s": "ᵐ", "nombre": "superíndice eme", "super": "m"},
+        {"s": "ˣ", "nombre": "superíndice equis", "super": "x"},
+        {"s": "⁺", "nombre": "superíndice más", "super": "+"},
+        {"s": "⁻", "nombre": "superíndice menos", "super": "-"}
+      ]
+    },
+    {
+      "id": "calculo",
+      "nombre": "Cálculo",
+      "simbolos": [
+        {"s": "mcd(", "nombre": "máximo común divisor", "dichos": ["máximo común divisor"]},
+        {"s": "mcm(", "nombre": "mínimo común múltiplo", "dichos": ["mínimo común múltiplo"]},
+        {"s": "mod", "nombre": "módulo", "dichos": ["módulo"], "binario": true},
+        {"s": "V(", "nombre": "variaciones", "dichos": ["variaciones"]},
+        {"s": "VR(", "nombre": "variaciones con repetición", "dichos": ["variaciones con repetición"]},
+        {"s": "C(", "nombre": "combinaciones", "dichos": ["combinaciones"]},
+        {"s": "CR(", "nombre": "combinaciones con repetición", "dichos": ["combinaciones con repetición"]},
+        {"s": "P(", "nombre": "permutaciones", "dichos": ["permuta", "permutaciones"]},
+        {"s": "PR(", "nombre": "permutaciones con repetición", "dichos": ["permuta con repetición", "permutaciones con repetición"]}
+      ]
+    },
+    {
+      "id": "constantes",
+      "nombre": "Números",
+      "simbolos": [
+        {"s": "e", "nombre": "número e", "dichos": ["e", "número e"]},
+        {"s": "i", "nombre": "unidad imaginaria", "dichos": ["i", "unidad imaginaria"]},
+        {"s": "π", "nombre": "pi", "dichos": ["pi", "número pi"]},
+        {"s": "φ", "nombre": "número áureo (fi)", "dichos": ["fi", "phi", "número áureo"]}
+      ]
+    },
+    {
+      "id": "funciones",
+      "nombre": "Funciones",
+      "simbolos": [
+        {"s": "sen(", "nombre": "seno", "dichos": ["seno de", "seno"]},
+        {"s": "cos(", "nombre": "coseno", "dichos": ["coseno de", "coseno"]},
+        {"s": "tg(", "nombre": "tangente", "dichos": ["tangente de", "tangente"]},
+        {"s": "ln(", "nombre": "logaritmo neperiano", "dichos": ["logaritmo neperiano de", "logaritmo neperiano", "logaritmo de", "logaritmo"]},
+        {"s": "eˣ", "nombre": "e elevado a x", "dichos": ["exponencial"]},
+        {"s": "dx", "nombre": "diferencial de x", "dichos": ["diferencial"]},
+        {"s": "∫₀¹", "nombre": "integral de 0 a 1 (cambia los límites)"}
+      ]
+    },
+    {
+      "id": "griegas",
+      "nombre": "Griegas",
+      "simbolos": [
+        {"s": "α", "nombre": "alfa", "dichos": ["alfa"]},
+        {"s": "β", "nombre": "beta", "dichos": ["beta"]},
+        {"s": "γ", "nombre": "gamma", "dichos": ["gamma"]},
+        {"s": "δ", "nombre": "delta", "dichos": ["delta"]},
+        {"s": "ε", "nombre": "épsilon", "dichos": ["épsilon"]},
+        {"s": "θ", "nombre": "theta", "dichos": ["theta"]},
+        {"s": "λ", "nombre": "lambda", "dichos": ["lambda"]},
+        {"s": "μ", "nombre": "mu", "dichos": ["mu"]},
+        {"s": "ρ", "nombre": "rho", "dichos": ["rho", "ro"]},
+        {"s": "σ", "nombre": "sigma", "dichos": ["sigma"]},
+        {"s": "τ", "nombre": "tau", "dichos": ["tau"]},
+        {"s": "χ", "nombre": "ji", "dichos": ["ji"]},
+        {"s": "ψ", "nombre": "psi", "dichos": ["psi"]},
+        {"s": "ω", "nombre": "omega", "dichos": ["omega"]},
+        {"s": "Γ", "nombre": "gamma mayúscula", "dichos": ["gamma mayúscula"]},
+        {"s": "Δ", "nombre": "delta mayúscula", "dichos": ["delta mayúscula"]},
+        {"s": "Σ", "nombre": "sigma mayúscula", "dichos": ["sigma mayúscula"]},
+        {"s": "Φ", "nombre": "fi mayúscula", "dichos": ["fi mayúscula"]},
+        {"s": "Ψ", "nombre": "psi mayúscula", "dichos": ["psi mayúscula"]},
+        {"s": "Ω", "nombre": "omega mayúscula", "dichos": ["omega mayúscula"]}
+      ]
+    }
+  ],
+
+  "letras": {
+    "_nota": "Variables: el nombre de la letra. Detras, 'mayúscula' la pone en mayuscula (pe mayúscula -> P). 'e' e 'i' NO son letras: son los numeros e e i (grupo constantes). La y es solo 'i griega'.",
+    "a": ["a"], "b": ["be"], "c": ["ce"], "d": ["de"], 
+    "f": ["efe"], "g": ["ge"], "h": ["hache", "ache"],
+    "j": ["jota"], "k": ["ka", "ca"], "l": ["ele"], "m": ["eme"],
+    "n": ["ene"], "ñ": ["eñe"], "o": ["o"], "p": ["pe"], "q": ["cu"],
+    "r": ["erre", "ere"], "s": ["ese"], "t": ["te"], "u": ["u"],
+    "v": ["uve"], "w": ["uve doble", "doble uve"], "x": ["equis"],
+    "y": ["i griega","y griega", "igriega", "ygriega"], "z": ["zeta", "ceta"]
+  },
+  "mayuscula": ["mayúscula"],
+
+  "indices": {
+    "_nota": "Detras de estas palabras va el indice: un numero ('sub doce' -> ₁₂), una letra ('sub ene' -> ₙ), y delante puede ir 'más' o 'menos' ('super menos uno' -> ⁻¹).",
+    "sub": ["sub"],
+    "super": ["super", "elevado a"]
+  },
+
+  "integral_entre": {
+    "_nota": "'integral entre A y B de' -> ∫[A, B] (A y B: numero, letra, π, e, ∞, 'menos' delante). El 'de' cierra el intervalo y quita la ambiguedad: 'entre treinta y cinco y cuarenta de' -> ∫[35, 40]; 'entre treinta y cinco de' -> ∫[30, 5]. Lo pidio pipataki.",
+    "dichos": ["integral entre"],
+    "y": ["y","i"],
+    "cierre": ["de"],
+    "plantilla": "∫[{a}, {b}]"
+  },
+
+  "combinatorio": {
+    "_nota": "n 'sobre' k -> el numero combinatorio, escrito como la combinacion: 'cuatro sobre dos' -> C(4, 2). n y k pueden ser numeros o letras.",
+    "dichos": ["sobre"],
+    "plantilla": "C({n}, {k})"
+  },
+
+  "decimales": {
+    "_nota": "numero + 'coma' + numero -> numero con decimales (tres coma catorce -> 3,14). Si no hay numero a los dos lados, 'coma' es la coma de siempre.",
+    "dichos": ["coma"],
+    "separador": ","
+  },
+
+  "herramientas": {
+    "_nota": "Actúan sobre lo seleccionado o, si no hay nada, sobre la línea del cursor ('bloque': las líneas seguidas, para sistemas de ecuaciones). El resultado va detrás si cabe; si no, debajo. Qué hace cada una: herramientas.py.",
+    "logica": [
+      {"id": "bien_formada", "nombre": "¿Bien formada?", "dichos": ["bien formada", "está bien formada", "valida", "validar"]},
+      {"id": "tabla_verdad", "nombre": "Tabla de verdad", "dichos": ["tabla de verdad", "tabla", "tabla verdad"]},
+      {"id": "clasificar", "nombre": "Clasificar", "dichos": ["clasifica", "clasificar"]},
+      {"id": "equivalencia", "nombre": "¿Equivalentes? (φ ≡ ψ)", "dichos": ["comprueba equivalencia", "son equivalentes"]},
+      {"id": "consecuencia", "nombre": "¿Consecuencia? (Γ ⊨ φ)", "dichos": ["comprueba consecuencia"]},
+      {"id": "analizar", "nombre": "Analizar (árbol)", "dichos": ["analiza", "analizar", "árbol sintáctico"]},
+      {"id": "fnc", "nombre": "FNC", "dichos": ["forma normal conjuntiva"]},
+      {"id": "fnd", "nombre": "FND", "dichos": ["forma normal disyuntiva"]}
+    ],
+    "algebra": [
+      {"id": "resuelve", "nombre": "Resuelve", "dichos": ["resuelve", "resolver"], "bloque": true},
+      {"id": "simplifica", "nombre": "Simplifica", "dichos": ["simplifica", "simplificar"]},
+      {"id": "desarrolla", "nombre": "Desarrolla", "dichos": ["desarrolla", "desarrollar"]},
+      {"id": "deriva", "nombre": "Deriva", "dichos": ["deriva", "derivar", "derivada"]},
+      {"id": "integra", "nombre": "Integra", "dichos": ["integra", "integrar"]}
+    ],
+    "calculo": [
+      {"id": "calcula", "nombre": "Calcula", "dichos": ["calcula", "calcular", "resultado"]},
+      {"id": "factoriza", "nombre": "Factoriza", "dichos": ["descomponer", "factores primos", "es primo", "factoriza", "factorizar"]}
+    ]
+  },
+
+  "ordenes": {
+    "borra": ["borra", "borrar"],
+    "deshaz": ["deshaz", "deshacer"],
+    "vaciar": ["vaciar", "borrar todo"],
+    "zoom_mas": ["más zoom", "acercar", "acerca"],
+    "zoom_menos": ["menos zoom", "alejar", "aleja"],
+    "espacio": ["espacio"],
+    "nueva_linea": ["nueva línea", "salto de línea"]
+  }
+}
