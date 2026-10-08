@@ -32,11 +32,16 @@ def _ruta():
                         "microfono.sock")
 
 
+def vc_en_marcha():
+    """True si VoiceController atiende peticiones de micro."""
+    return os.path.exists(_ruta())
+
+
 def pedir():
     """Pide el micro a VC. Devuelve la conexión, que hay que pasar luego a
     soltar(); None si VC no está (o no contesta) y no hay nada que soltar."""
     ruta = _ruta()
-    if not os.path.exists(ruta):
+    if not vc_en_marcha():
         return None
     conexion = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
     try:

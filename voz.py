@@ -134,15 +134,26 @@ def palabras_que_no_conoce(traductor):
     return fuera
 
 
-def micro_del_servidor():
-    """(indice, nombre, frecuencia) del micro de config.MICRO, o None."""
+def micro_del_servidor(releer=False):
+    """(indice, nombre, frecuencia) del micro de config.MICRO, o None.
+
+    Si lo tiene VoiceController, PortAudio no lo lista (un aparato ALSA
+    ocupado no sale): entonces vale (None, nombre, None), y el indice y la
+    frecuencia se buscan al escuchar, con el micro ya cedido (ver abrir()).
+    releer: PortAudio guarda la lista del arranque; hay que reiniciarlo para
+    ver un micro que se acaba de quedar libre."""
     nombre = getattr(config, "MICRO", None)
     if not nombre:
         return None
     import sounddevice as sd
+    if releer:
+        sd._terminate()
+        sd._initialize()
     for i, d in enumerate(sd.query_devices()):
         if d["max_input_channels"] > 0 and nombre.lower() in d["name"].lower():
             return i, d["name"], int(d["default_samplerate"])
+    if not releer and cesion_vc.vc_en_marcha():
+        return None, nombre, None
     raise RuntimeError(f"no hay ningun micro cuyo nombre contenga '{nombre}' "
                        f"(config.MICRO)")
 
@@ -296,11 +307,18 @@ def _con_micro_del_servidor(s, micro):
         cola.put(bytes(datos))
 
     def abrir():
-        nonlocal flujo, cesion
-        s.preparar(frecuencia)
+        nonlocal flujo, cesion, indice, nombre, frecuencia
         # Si VoiceController tiene el micro, nos lo deja mientras se escucha
-        # (ver cesion_vc.py).
+        # (ver cesion_vc.py). Antes de pedirlo no se veía: se busca ahora.
         cesion = cesion_vc.pedir()
+        if cesion is not None or indice is None:
+            try:
+                indice, nombre, frecuencia = micro_del_servidor(releer=True)
+            except Exception:
+                cesion_vc.soltar(cesion)
+                cesion = None
+                raise
+        s.preparar(frecuencia)
         # Como VoiceController: frecuencia propia del aparato, mono, int16;
         # Vosk se encarga de pasarlo a lo suyo.
         try:
