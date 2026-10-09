@@ -6,8 +6,8 @@ autor y con la misma licencia.
 
 ## Componentes de terceros
 
-No van dentro del paquete: el instalador los descarga o los instala con pip
-en tu equipo.
+Salvo las fuentes, no van dentro del paquete: el instalador los descarga o
+los instala con pip en tu equipo.
 
 | Componente | Autor | Licencia | Para qué |
 |---|---|---|---|
@@ -18,6 +18,7 @@ en tu equipo.
 | cryptography | PyCA | Apache 2.0 / BSD | el certificado HTTPS |
 | sounddevice | Matthias Geier | MIT | el micrófono del ordenador |
 | piper-tts | Open Home Foundation | GPLv3 | la voz que dice el código de emparejamiento |
+| Fuentes DejaVu Sans Mono y DejaVu Sans (recortadas) | DejaVu fonts team, sobre Bitstream Vera | licencia libre de DejaVu/Bitstream Vera (`static/fuentes/LICENCIA-DejaVu.txt`) | que el editor sea monoespaciado en cualquier aparato (van dentro del paquete) |
 | Voz `es_ES-sharvard-medium` | entrenada sobre el corpus Sharvard (Universidad de Edimburgo) | CC BY 3.0 | esa voz |
 
 La voz «sharvard» se usa con atribución: corpus Sharvard,

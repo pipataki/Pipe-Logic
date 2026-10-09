@@ -20,7 +20,7 @@ hermanas, para poder usarse sin manos.
 - **App para el móvil**, emparejada con tu ordenador por un código que el
   ordenador dice en voz alta.
 
-> **Versión 0.2.0**. Para Linux y Windows (lo de Windows, aún sin probar a fondo).
+> **Versión 0.2.1**. Para Linux y Windows (lo de Windows, aún sin probar a fondo).
 
 ## Descarga
 
@@ -31,8 +31,8 @@ en PDF en español e inglés. Más información en
 
 ## Instalar
 
-    unzip Pipe-Logic-0.2.0.zip
-    cd Pipe-Logic-0.2.0
+    unzip Pipe-Logic-0.2.1.zip
+    cd Pipe-Logic-0.2.1
     ./install.sh
 
 y luego `./pipelogic.sh --abrir`. En **Windows** (con Python 3.10 o más
