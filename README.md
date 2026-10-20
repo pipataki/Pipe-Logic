@@ -17,10 +17,14 @@ hermanas, para poder usarse sin manos.
   «indeterminado» y por qué.
 - **Álgebra**: ecuaciones y sistemas, simplificar, factorizar, derivar,
   integrar.
+- **Modo Estudio**: haz tú el ejercicio (tabla de verdad, tableau, árbol,
+  los pasos de un cálculo o de una ecuación) y Pipe-Logic te dice dónde
+  fallaste, con una pista y sin darte la solución, hasta el «¡Muy bien
+  hecho!».
 - **App para el móvil**, emparejada con tu ordenador por un código que el
   ordenador dice en voz alta.
 
-> **Versión 0.3.0**. Para Linux y Windows (lo de Windows, aún sin probar a fondo).
+> **Versión 0.4.0**. Para Linux y Windows (lo de Windows, aún sin probar a fondo).
 
 ## Descarga
 
@@ -31,8 +35,8 @@ en PDF en español e inglés. Más información en
 
 ## Instalar
 
-    unzip Pipe-Logic-0.3.0.zip
-    cd Pipe-Logic-0.3.0
+    unzip Pipe-Logic-0.4.0.zip
+    cd Pipe-Logic-0.4.0
     ./install.sh
 
 y luego `./pipelogic.sh --abrir`. En **Windows** (con Python 3.10 o más
